@@ -15,7 +15,7 @@ RUN useradd -m -u ${UID} -s /bin/bash ${USERNAME} \
 
 # CPU-only PyTorch + YOLOv8 (Codespaces has no GPU). cv_bridge requires numpy<2.
 RUN pip3 install --no-cache-dir torch torchvision --index-url https://download.pytorch.org/whl/cpu \
-    && pip3 install --no-cache-dir ultralytics \
+    && pip3 install --no-cache-dir ultralytics lap \
     && pip3 install --no-cache-dir pandas matplotlib plotly streamlit \
     && pip3 install --no-cache-dir "numpy<2" "setuptools==58.2.0"
 

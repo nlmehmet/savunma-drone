@@ -25,6 +25,8 @@ setup(
     entry_points={
         'console_scripts': [
             'data_recorder = savunma_drone.data_recorder:main',
+            'target_detection = savunma_drone.target_detection:main',
+            'test_image_publisher = savunma_drone.test_image_publisher:main',
         ],
     },
 )
