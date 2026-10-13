@@ -15,7 +15,7 @@ setup(
     zip_safe=True,
     maintainer='user',
     maintainer_email='user@todo.todo',
-    description='TODO: Package description',
+    description='ROS 2 autonomous surveillance simulation with data logging',
     license='TODO: License declaration',
     extras_require={
         'test': [
@@ -24,6 +24,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            'data_recorder = savunma_drone.data_recorder:main',
         ],
     },
 )
