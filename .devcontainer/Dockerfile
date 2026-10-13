@@ -17,7 +17,7 @@ RUN useradd -m -u ${UID} -s /bin/bash ${USERNAME} \
 RUN pip3 install --no-cache-dir torch torchvision --index-url https://download.pytorch.org/whl/cpu \
     && pip3 install --no-cache-dir ultralytics \
     && pip3 install --no-cache-dir pandas matplotlib plotly streamlit \
-    && pip3 install --no-cache-dir "numpy<2"
+    && pip3 install --no-cache-dir "numpy<2" "setuptools==58.2.0"
 
 USER ${USERNAME}
 RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
