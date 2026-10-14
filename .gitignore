@@ -1,0 +1,12 @@
+build/
+install/
+log/
+__pycache__/
+*.pt
+*.pyc
+.vscode/
+data/runs/*.csv
+*.egg-info/
+*.zip
+models/target_billboard/materials/textures/target.jpg
+models/target_billboard/materials/textures/target.jpg
