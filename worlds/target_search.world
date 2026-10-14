@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="target_search">
+    <include><uri>model://ground_plane</uri></include>
+    <include><uri>model://sun</uri></include>
+
+    <!-- Robot at the origin, facing -x (away from the target) so it has to search -->
+    <include>
+      <uri>model://camera_robot</uri>
+      <pose>0 0 0 0 0 3.14159</pose>
+    </include>
+
+    <!-- Target panel about 3.2 m away at a bearing of ~39 deg, facing the robot -->
+    <include>
+      <uri>model://target_billboard</uri>
+      <pose>2.5 2.0 1.0 0 0 3.817</pose>
+    </include>
+  </world>
+</sdf>

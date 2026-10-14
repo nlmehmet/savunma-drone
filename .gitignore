@@ -8,3 +8,5 @@ __pycache__/
 data/runs/*.csv
 *.egg-info/
 *.zip
+models/target_billboard/materials/textures/target.jpg
+models/target_billboard/materials/textures/target.jpg

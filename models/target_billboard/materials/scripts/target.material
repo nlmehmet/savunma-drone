@@ -1,0 +1,14 @@
+material Target/Photo
+{
+  technique
+  {
+    pass
+    {
+      lighting off
+      texture_unit
+      {
+        texture target.jpg
+      }
+    }
+  }
+}

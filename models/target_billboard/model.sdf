@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="target_billboard">
+    <static>true</static>
+    <link name="panel">
+      <visual name="photo">
+        <geometry><box><size>0.02 1.5 2.0</size></box></geometry>
+        <material>
+          <script>
+            <uri>model://target_billboard/materials/scripts</uri>
+            <uri>model://target_billboard/materials/textures</uri>
+            <name>Target/Photo</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>
