@@ -2,7 +2,7 @@
 
 This project implements a closed-loop autonomy and target search algorithm for unmanned ground/air vehicles using **ROS 2 Humble**, **Gazebo**, **OpenCV**, and **Python**. Developed as part of robotics and artificial intelligence studies.
 
-> GIF: (a recording of the drone detecting and tracking a target in Gazebo will be added here)
+![Demo: the robot searches for, finds and tracks the target](docs/demo.gif)
 
 ## Features
 
@@ -29,9 +29,9 @@ This project implements a closed-loop autonomy and target search algorithm for u
 ## Roadmap
 
 - [x] Basic ROS 2 + Gazebo simulation with patrol mode
-- [ ] Codespaces development environment (devcontainer)
-- [ ] YOLOv8 target detection node + yaw/pitch tracking
-- [ ] Run data logging and analysis (pandas, Plotly, Streamlit dashboard)
+- [x] Codespaces development environment (devcontainer)
+- [x] YOLOv8 target detection node + yaw/pitch tracking
+- [x] Run data logging and analysis (pandas, Plotly, Streamlit dashboard)
 - [ ] Demo GIF + architecture diagram
 - [ ] PX4 SITL + MicroXRCE-DDS (Offboard control)
 - [ ] Gimbal payload design (Autodesk Inventor)
@@ -41,3 +41,22 @@ This project implements a closed-loop autonomy and target search algorithm for u
 `camera -> /camera/image_raw -> target detection (YOLOv8) -> /detection -> control -> /cmd_vel`
 
 Run data is recorded to `data/runs/*.csv` and analyzed in `analysis/`.
+
+## Usage
+
+```bash
+source install/setup.bash
+
+# Gazebo simulation: robot searches for a target panel, detects it with YOLOv8 and tracks it
+ros2 launch savunma_drone sim.launch.py gui:=false
+
+# Test without Gazebo: publish a sample image as the camera feed
+ros2 run savunma_drone test_image_publisher
+ros2 run savunma_drone target_detection --ros-args -p target_class:=person
+
+# Analyze a recorded run (data/runs/*.csv)
+python3 analysis/analyze_run.py
+streamlit run analysis/dashboard.py
+```
+
+> Note: on a 2-core CPU-only Codespace the camera runs at only a few Hz.

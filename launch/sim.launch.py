@@ -19,7 +19,7 @@ def generate_launch_description():
         DeclareLaunchArgument(
             'world', default_value=os.path.join(share, 'worlds', 'target_search.world')),
         DeclareLaunchArgument('gui', default_value='true'),
-        DeclareLaunchArgument('record', default_value='true'),
+        DeclareLaunchArgument('record_data', default_value='true'),
         DeclareLaunchArgument('target_class', default_value='person'),
 
         SetEnvironmentVariable(
@@ -42,5 +42,5 @@ def generate_launch_description():
 
         Node(
             package='savunma_drone', executable='data_recorder',
-            output='screen', condition=IfCondition(LaunchConfiguration('record'))),
+            output='screen', condition=IfCondition(LaunchConfiguration('record_data'))),
     ])

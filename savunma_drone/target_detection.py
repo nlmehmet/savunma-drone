@@ -72,7 +72,7 @@ class TargetDetection(Node):
 
         start = time.perf_counter()
         results = self.model.track(
-            frame, persist=True, conf=self.conf, imgsz=self.imgsz,
+            frame, persist=True, tracker='bytetrack.yaml', conf=self.conf, imgsz=self.imgsz,
             classes=self.class_ids, verbose=False)
         latency_ms = (time.perf_counter() - start) * 1000.0
         result = results[0]
