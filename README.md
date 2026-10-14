@@ -7,7 +7,7 @@ This project implements a closed-loop autonomy and target search algorithm for u
 ## Features
 
 - **Simulation Environment:** Gazebo SITL integration with sensor suites.
-- **Computer Vision Pipeline:** Real-time camera stream parsing via `cv_bridge` and OpenCV matrix transformations.
+- **Object Detection and Tracking:** YOLOv8 (Ultralytics) detects and tracks people in the camera stream. The robot steers toward the best target with a proportional controller and searches by rotating in place when no target is visible.
 - **Autonomous Search/Patrol Mode:** Closed-loop velocity commands (`geometry_msgs/Twist`) allowing the robot to execute automated patrol routines when targets are out of sight.
 - **ROS 2 Node Architecture:** Modular design separating sensor subscription and motor actuation.
 - **Run Data Logging:** The `data_recorder` node logs position, velocity, commands and detections to CSV for later analysis.
@@ -17,6 +17,8 @@ This project implements a closed-loop autonomy and target search algorithm for u
 - **Framework:** ROS 2 Humble
 - **Physics Simulator:** Gazebo
 - **Language:** Python (rclpy, OpenCV)
+- **Perception:** YOLOv8 (Ultralytics, PyTorch CPU) and OpenCV
+- **Analysis:** pandas, matplotlib, Plotly, Streamlit
 - **Message Types:** `sensor_msgs/Image`, `geometry_msgs/Twist`, `nav_msgs/Odometry`
 
 ## Quick Start (GitHub Codespaces)
@@ -24,7 +26,7 @@ This project implements a closed-loop autonomy and target search algorithm for u
 1. Go to **Code > Codespaces > Create codespace on main** (4 cores recommended).
 2. When the setup finishes, the package is already built (`colcon build --symlink-install`).
 3. Open port **6080** to see the Gazebo desktop in your browser (noVNC, default password: `vscode`).
-4. Start the data recorder: `ros2 run savunma_drone data_recorder`
+4. Run the simulation: `ros2 launch savunma_drone sim.launch.py gui:=false` (see Usage below)
 
 ## Roadmap
 
@@ -32,7 +34,8 @@ This project implements a closed-loop autonomy and target search algorithm for u
 - [x] Codespaces development environment (devcontainer)
 - [x] YOLOv8 target detection node + yaw/pitch tracking
 - [x] Run data logging and analysis (pandas, Plotly, Streamlit dashboard)
-- [ ] Demo GIF + architecture diagram
+- [x] Demo GIF
+- [ ] Architecture diagram
 - [ ] PX4 SITL + MicroXRCE-DDS (Offboard control)
 - [ ] Gimbal payload design (Autodesk Inventor)
 
